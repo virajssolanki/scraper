@@ -16,9 +16,9 @@ class ScrapeTableSpider(scrapy.Spider):
 
     def parse(self, response):
         vin_numbers = []
-        print(response.xpath('/html/body/div/div/div[5]/div[2]'))
-        # for row in response.xpath('//div[@class="panel panel-default"][4]/div[@class="panel-body"]/table[@class="table"]/tbody/tr'):
-        #     print(row)
+        # print(response.xpath('//div[@class="panel panel-default"][1]/div[@class="panel-heading"]/a//text()').extract())
+        for row in response.xpath('//div[@class="panel panel-default"]'):
+            print(row.xpath('//text()').extract_first())
         #     vins = row.xpath('td[1]//text()').extract_first()
             # [ vin_numbers.append(vin) if vin not in vin_numbers and self.validate_vin(vin) else vin_numbers for vin in vins ]
     #     if vin_numbers:
